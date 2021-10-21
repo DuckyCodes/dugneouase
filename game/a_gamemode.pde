@@ -1,0 +1,4 @@
+void gmode() {
+
+  background(blue);
+}
