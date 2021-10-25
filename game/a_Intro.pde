@@ -1,11 +1,13 @@
 void intro() {
-  
+
   //Looks in intro
   textFont(font);
   background(black);
-  blueButton.show();
-  
-  if (blueButton.clicked) {
+  introGIF.show();
+  introButton.show();
+
+
+  if (introButton.clicked) {
 
     mode = gmode;
   }

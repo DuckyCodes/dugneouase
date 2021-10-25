@@ -1,4 +1,7 @@
 void gmode() {
 
-  background(blue);
+gameRoom();
+  
+  
+  
 }

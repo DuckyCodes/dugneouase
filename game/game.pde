@@ -1,7 +1,12 @@
 
 
+//GIF
+AGIF introGIF;
 
-Button blueButton;
+//button
+Button introButton;
+
+
 
 
 //mouseFuntions
@@ -38,8 +43,11 @@ void setup() {
   font = createFont("Bahisy.ttf", 200);
   textFont(font);
 
+  //GIF
+  introGIF = new AGIF(35, "frame_", "_delay-0.03s.gif",  );
+
   //buttons
-  blueButton = new Button("GREEN", 200, 400, 200, 150, green, yellow);
+  introButton = new Button("GREEN", 400, 400, 200, 150, green, yellow);
 }
 
 
