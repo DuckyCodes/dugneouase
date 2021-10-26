@@ -1,31 +1,22 @@
-//class gameRoom {
+class object {
 
-//  int x, y;
-//  color wall, floor;
+  PVector loc;
+  PVector vel;
+  int hp;
+  float sd;
 
+  object() {
+    loc = new PVector(width/2, height/2);
+    vel = new PVector(0, 0);
+    hp = 1;
+  }
 
-//  gameRoom(int _x, int _y, color wallc, color floorc) {
-//    _x = x;
-//    _y = y;
-//    wallc = wall;
-//    floor = floorc;
-//  }
+  void act() {
 
-
-//  void show() {
-    
-//    background(wall);
-//    line(0,0,width,height);
-//    line(width,0 , 0 , height);
-    
-//    fill(floor);
-//    rect(width/2, height/2,600,600);
-   
-    
-    
-    
-    
-    
-//  }
-  
-//}
+    loc.add(vel);
+    if (loc.x<width*0.1) loc.x=width*0.1;
+    if (loc.x<height*0.1) loc.x=height*0.1;
+    if (loc.x<width*0.9) loc.x=width*0.9;
+    if (loc.x<height*0.9) loc.x=height*0.9;
+  }
+}

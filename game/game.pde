@@ -1,17 +1,29 @@
-
+/*1. Make a new project 
+2. Add the mode framework ^
+3. Add gif and Button classes ^ 
+4. Create a intro with gif and the button ^
+5. do color schemes but idgaf ab that^
+6. Draw "the room" but just walls and floor for now^
+7. Create a GameObject class ^
+8. Create a Hero class that extends GameObject  - moves with keyboard ^
+    - runs into walls^
+    */
+object myObject;
 
 //GIF
 AGIF introGIF;
 
 //button
 Button introButton;
-
+//hero
+hero myHero;
 
 
 
 //mouseFuntions
 boolean mReleased, mPressed, clicked;
-
+//keyboardFuntions
+boolean wKey, aKey, sKey, dKey;
 
 //colours
 color green = #4BFF05;
@@ -38,16 +50,18 @@ PFont font;
 
 void setup() {
   //setup
-  fullScreen(FX2D);
+  fullScreen();
   mode = intro;
   font = createFont("Bahisy.ttf", 200);
   textFont(font);
 
   //GIF
-  introGIF = new AGIF(35, "frame_", "_delay-0.03s.gif",  );
+  introGIF = new AGIF(35, "frame_", "_delay-0.03s.gif", 0, 0 );
 
   //buttons
   introButton = new Button("GREEN", 400, 400, 200, 150, green, yellow);
+  //hero
+  myHero = new hero();
 }
 
 
@@ -78,6 +92,22 @@ void clicked() {
 }
 
 void keyPressed () {
+
+  if (keyCode =='w'||keyCode=='W') {
+    wKey=true;
+  }
+  if (keyCode =='a'||keyCode=='A') {
+    aKey=true;
+  }
+  if (keyCode =='s'||keyCode=='S') {
+    sKey=true;
+  }
+  if (keyCode =='d'||keyCode=='D') {
+    dKey=true;
+  }
+
+
+
   if (mode==gmode) {
     if (keyCode =='p'||keyCode=='P') {
       mode=pause;
@@ -86,5 +116,19 @@ void keyPressed () {
     if (key=='p'||key=='P') {
       mode=gmode;
     }
+  }
+}
+void keyReleased() {
+  if (keyCode =='w'||keyCode=='W') {
+    wKey=false;
+  }
+  if (keyCode =='a'||keyCode=='A') {
+    aKey=false;
+  }
+  if (keyCode =='s'||keyCode=='S') {
+    sKey=false;
+  }
+  if (keyCode =='d'||keyCode=='D') {
+    dKey=false;
   }
 }
