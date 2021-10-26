@@ -1,14 +1,15 @@
 /*1. Make a new project 
-2. Add the mode framework ^
-3. Add gif and Button classes ^ 
-4. Create a intro with gif and the button ^
-5. do color schemes but idgaf ab that^
-6. Draw "the room" but just walls and floor for now^
-7. Create a GameObject class ^
-8. Create a Hero class that extends GameObject  - moves with keyboard ^
-    - runs into walls^
-    */
-object myObject;
+ 2. Add the mode framework ^
+ 3. Add gif and Button classes ^ 
+ 4. Create a intro with gif and the button ^
+ 5. do color schemes but idgaf ab that^
+ 6. Draw "the room" but just walls and floor for now^
+ 7. Create a GameObject class ^
+ 8. Create a Hero class that extends GameObject  - moves with keyboard ^
+ - runs into walls^
+ */
+ArrayList<object> myObjects;
+
 
 //GIF
 AGIF introGIF;
@@ -16,6 +17,7 @@ AGIF introGIF;
 //button
 Button introButton;
 //hero
+
 hero myHero;
 
 
@@ -54,7 +56,9 @@ void setup() {
   mode = intro;
   font = createFont("Bahisy.ttf", 200);
   textFont(font);
+  imageMode(CENTER);
 
+  myObjects = new ArrayList<object>(1000);
   //GIF
   introGIF = new AGIF(35, "frame_", "_delay-0.03s.gif", 0, 0 );
 
@@ -62,6 +66,7 @@ void setup() {
   introButton = new Button("GREEN", 400, 400, 200, 150, green, yellow);
   //hero
   myHero = new hero();
+  myObjects.add(myHero);
 }
 
 
