@@ -1,20 +1,18 @@
-//class darkM{
-//  float t;
-//  float x, y ,s;
-  
-//  darkM(float _x, float _y, float _s){
-//    s = _s;
-//    x = _x;
-//    y = y_;
-//    t= 0;
-    
-    
-//  }
-//  void show(){
-//    d = dist();
-    
-    
-//  }
-  
-  
-//}
+class darkM {
+  float t;
+  float x, y, s;
+  float d;
+
+  darkM(float _x, float _y, float _s) {
+    s = _s;
+    x = _x;
+    y = _y;
+    t= 0;
+  }
+  void show() {
+    fill(black);
+    square(x, y, s);
+    d = dist(x, y, x, y );
+    t= map (d, 0, 100, 0, 255);
+  }
+}

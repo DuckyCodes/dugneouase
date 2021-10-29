@@ -1,9 +1,12 @@
 void gmode() {
  
   //GameObjects();
+  image(map,100, 100);
   gameRoom();
   myHero.show();
   myHero.act();
+  dark.get(0).show();
+
 }
 
 void GameObjects() {
