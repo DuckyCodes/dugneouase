@@ -1,12 +1,12 @@
 void gmode() {
- 
+
   //GameObjects();
-  image(map,100, 100);
+  image(map, 100, 100);
   gameRoom();
   myHero.show();
   myHero.act();
+  darkness();
   dark.get(0).show();
-
 }
 
 void GameObjects() {
@@ -20,5 +20,17 @@ void GameObjects() {
     } else {
       i++;
     }
+  }
+}
+
+void darkness() {
+  int i = 0;
+  while ( i < dark.size()) {
+    darkM myDark = dark.get(i);
+    myDark.show();
+    myDark.act();
+    println("asdf");
+
+    i++;
   }
 }

@@ -10,9 +10,15 @@ class darkM {
     t= 0;
   }
   void show() {
-    fill(black);
-    square(x, y, s);
-    d = dist(x, y, x, y );
+     d = dist(x, y, x, y );
     t= map (d, 0, 100, 0, 255);
+    fill(black);
+    
+    square(x, y, s);
+   
+    
+  }
+  void act(){
+    
   }
 }

@@ -48,9 +48,10 @@ final int egame = 4;
 //everything
 PFont font;
 
+int s= 100;
 //map
 PImage map;
-color nR,sR, eR, wR;
+color nR, sR, eR, wR;
 
 void setup() {
   //setup
@@ -59,29 +60,37 @@ void setup() {
   font = createFont("Bahisy.ttf", 200);
   textFont(font);
   map = loadImage("map.png");
-  
-  
+
+
   //objects
   imageMode(CENTER);
- 
+
   myObjects = new ArrayList<object>(1000);
-  
+
   //darkness
   dark = new ArrayList<darkM>(1000);
   float s = 10;
-  int x = 0,y = 0;
-  while
-  dark.add(new darkM(x, y ,s));
+  int x = 0, y = 0;
+  while ( y< height) { 
+    dark.add(new darkM(x, y, s));
+    x += s;
+    if (x >= width) {
+      println("a");
+      x = 0;
+      y += s;
+    }
+  }
+
+
   //GIF
   introGIF = new AGIF(35, "frame_", "_delay-0.03s.gif", 0, 0 );
 
   //buttons
-  introButton = new Button("GREEN", 400, 400, 200, 150, green, yellow);
+  introButton = new Button("START", 400, 400, 200, 150, green, yellow);
   //hero
-  
+
   myHero = new hero();
   myObjects.add(myHero);
-  
 }
 
 
