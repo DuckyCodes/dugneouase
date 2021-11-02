@@ -37,7 +37,6 @@ color red = #FF190D;
 color orange = #FF920D;
 color pink = #F7C2D6;
 color brown = #602B2B;
-
 //setup gamescreens
 int mode = 0;
 final int intro = 1;
@@ -49,6 +48,7 @@ final int egame = 4;
 PFont font;
 
 int s= 100;
+int mapx, mapy;
 //map
 PImage map;
 color nR, sR, eR, wR;
@@ -69,9 +69,12 @@ void setup() {
 
   //darkness
   dark = new ArrayList<darkM>(1000);
-  float s = 10;
+  float s = 50;
   int x = 0, y = 0;
-  while ( y< height) { 
+  
+  
+  
+  while ( y< height+s) { 
     dark.add(new darkM(x, y, s));
     x += s;
     if (x >= width) {

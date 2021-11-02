@@ -10,10 +10,10 @@ class darkM {
     t= 0;
   }
   void show() {
-     d = dist(x, y, x, y );
-    t= map (d, 0, 100, 0, 255);
-    fill(black);
-    
+     d = dist(myHero.loc.x, myHero.loc.y, x, y );
+    t= map (d, 0, 300, 0, 255);
+    fill(black, t);
+    noStroke();
     square(x, y, s);
    
     
