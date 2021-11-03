@@ -37,22 +37,10 @@ void darkness() {
 
 void map() {
 
-  //float s = 100;
-  //int x = 0, y = 0;
-  //while (y<map.height) {
-  //   color c = map.get(x, y);
-  //   fill (c);
-  //   square(x, y, s);
-  //   y = y +1;
-  //x = x+1;
-  //   if (x>=map.width) {
-  //     x=0;
-  //     y = y +1;
-  //   }
   int i = 0;
   int mapx = 0;
   int mapy = 0;
-  while (i <100) {
+  while (i <169) {
 
     if (map.get(mapx, mapy)== #FFFFFF) {
       stroke(black);
@@ -65,11 +53,11 @@ void map() {
     if (myHero.rX == mapx && myHero.rY == mapy) {
       fill(orange);
     }
-    rect(mapx*20+10, mapy*20+10, 30, 30 );
+    rect(mapx*12+50, mapy*12+50, 12, 12 );
     mapx++;
     i++;
 
-    if (mapx >= 10) {
+    if (mapx >= 13) {
       mapx = 0;
       mapy++;
     }

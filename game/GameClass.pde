@@ -4,6 +4,7 @@ class object {
   PVector vel;
   int hp;
   float sd;
+  
 
   object() {
     loc = new PVector(width/2, height/2);
