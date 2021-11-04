@@ -1,4 +1,0 @@
-void egame() {
-
-  background(red);
-}
