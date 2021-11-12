@@ -94,6 +94,7 @@ void setup() {
 
   myHero = new hero();
   myObjects.add(myHero);
+  myObjects.add(new Enemy());
 }
 
 

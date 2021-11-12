@@ -21,6 +21,9 @@ class Bullet extends object {
     hp = 1;
     s = nsize;
     colour = ncolor;
+    roomX = myHero.roomX;
+    roomY = myHero.roomY;
+    
   }
 
   void show() {

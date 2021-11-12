@@ -1,9 +1,10 @@
 class object {
-  
+  int roomX, roomY;
   PVector loc;
   PVector vel;
   int hp;
   float sd;
+  int s;
   
 
   object() {

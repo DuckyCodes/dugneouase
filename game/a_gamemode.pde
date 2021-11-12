@@ -1,25 +1,27 @@
 void gmode() {
 
-  
+
   image(map, 100, 100);
   gameRoom();
   GameObjects();
-  myHero.show();
-  myHero.act();
+  
   darkness();
   map();
 }
 
 void GameObjects() {
-  int i = 0;
-  while ( i < myObjects.size()) {
+
+  for ( int i =0;  i < myObjects.size(); i++) {
     object myObj = myObjects.get(i);
-    myObj.show();
-    myObj.act();
-    if (myObj.hp == 0) {
-      myObjects.remove(i);
-    } else {
-      i++;
+    if (myObj.roomX == myHero.roomX && myObj.roomY == myHero.roomY) {
+      myObj.show();
+      myObj.act();
+
+      if (myObj.hp == 0) {
+        myObjects.remove(i);
+        i--;
+      }
+      
     }
   }
 }

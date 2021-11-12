@@ -11,7 +11,7 @@ class hero extends object {
     rY= 1;
     rX= 1;
     s = 40;
-    myWeapon = new weapon();
+    myWeapon = new machineGun();
   }
 
   void show() {
