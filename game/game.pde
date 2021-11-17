@@ -20,12 +20,16 @@ Button introButton;
 
 hero myHero;
 
-
+//enemy
+Follower myFollower;
 
 //mouseFuntions
 boolean mReleased, mPressed, clicked;
 //keyboardFuntions
 boolean wKey, aKey, sKey, dKey, spaceKey;
+
+//
+
 
 //colours
 color green = #4BFF05;
@@ -95,6 +99,8 @@ void setup() {
   myHero = new hero();
   myObjects.add(myHero);
   myObjects.add(new Enemy());
+  myObjects.add(new Follower(0,0));
+  myObjects.add(new Lurker(0,0));
 }
 
 

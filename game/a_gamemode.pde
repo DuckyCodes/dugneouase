@@ -7,6 +7,7 @@ void gmode() {
   
   darkness();
   map();
+
 }
 
 void GameObjects() {
@@ -17,7 +18,7 @@ void GameObjects() {
       myObj.show();
       myObj.act();
 
-      if (myObj.hp == 0) {
+      if (myObj.hp <= 0) {
         myObjects.remove(i);
         i--;
       }
