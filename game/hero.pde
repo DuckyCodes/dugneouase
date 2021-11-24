@@ -5,6 +5,7 @@ class hero extends object {
   int s;
   int hp;
   int pt;
+  AGIF currentAction;
   boolean protection;
   weapon myWeapon;
 
@@ -15,6 +16,8 @@ class hero extends object {
     rY= 1;
     rX= 1;
     s = 40;
+    currentAction = manStand;
+
     pt = 100;
     protection = true;
     myWeapon = new Shotgun();
@@ -25,10 +28,7 @@ class hero extends object {
     stroke(blue);
     ellipse(myHero.loc.x, myHero.loc.y, pt, pt);
 
-    fill(pink);
-    stroke(blue);
-    strokeWeight(2);
-    ellipse(loc.x, loc.y, s, s);
+    currentAction.show( myHero.loc.x, myHero.loc.y, s, s);
 
     fill(white);
     textAlign(CENTER, CENTER);
@@ -49,7 +49,13 @@ class hero extends object {
     if (!wKey&&!sKey) vel.y =0;
     if (!aKey&&!dKey) vel.x =0;
 
-
+    if (abs(vel.y)>abs(vel.x)) {
+      if (vel.y>=0)currentAction = manDown;
+      else currentAction = manUp;
+    } else {
+      if (vel.x>0)currentAction = manRight;
+      else currentAction = manLeft;
+    }
 
     if (nR != white && loc.y ==height*0.1&& loc.x >= width/2-50&&loc.x <= width/2+50  ) {
       rY--;

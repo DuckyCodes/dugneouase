@@ -13,6 +13,11 @@ ArrayList<darkM> dark;
 
 //GIF
 AGIF introGIF;
+AGIF manUp;
+AGIF manDown;
+AGIF manRight;
+AGIF manLeft;
+AGIF manStand;
 
 //button
 Button introButton;
@@ -99,6 +104,11 @@ void setup() {
 
   //GIF
   introGIF = new AGIF(35, "frame_", "_delay-0.03s.gif", 0, 0 );
+  manUp = new AGIF(3,"forward",".png",0,0);
+  manDown = new AGIF(3,"back",".png",0,0);
+  manRight = new AGIF(3,"right",".png",0,0);
+  manLeft = new AGIF(3,"left",".png",0,0);
+  manStand = new AGIF(3,"stand",".png",0,0);
 
   //buttons
   introButton = new Button("START", 400, 400, 200, 150, green, yellow);
