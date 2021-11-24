@@ -25,16 +25,15 @@ class hero extends object {
     stroke(blue);
     ellipse(myHero.loc.x, myHero.loc.y, pt, pt);
 
-    fill(white);
-    textAlign(CENTER, CENTER);
-    textSize(25);
-    text(hp, CENTER, CENTER);
-
-
     fill(pink);
     stroke(blue);
     strokeWeight(2);
     ellipse(loc.x, loc.y, s, s);
+
+    fill(white);
+    textAlign(CENTER, CENTER);
+    textSize(25);
+    text(hp, CENTER, CENTER);
 
     popMatrix();
   }
@@ -72,7 +71,6 @@ class hero extends object {
     }
 
     if (protection == true) {
-      pt=100;
       pt--;
     }
     if (pt<=0) {
@@ -83,15 +81,23 @@ class hero extends object {
     while (i < myObjects.size()) {
       object obj = myObjects.get(i);
       if (obj instanceof Enemy && roomX == obj.roomX && roomY == obj.roomY) {
-        if (dist(myHero.loc.x, myHero.loc.y, obj.loc.x, obj.loc.y) <= s/2 + obj.s/2) {
-          if (protection == false) {
+        if (protection == false) {
+          if (dist(myHero.loc.x, myHero.loc.y, obj.loc.x, obj.loc.y) <= s/2 + obj.s/2) {
             hp--;
             protection = true;
+            pt = 100;
           }
         }
       }
+      if (obj instanceof DropItem && Collidingwith(obj)) {
+        DropItem item = (DropItem) obj;
+        if (item.type==GUN) {
+          myWeapon = item.w;
+          item.hp=0;
+        }
+      }
       i++;
+      if (myHero.hp == 0) mode = egame;
     }
-    if (myHero.hp == 0) mode = egame;
   }
 }

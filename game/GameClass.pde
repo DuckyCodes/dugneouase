@@ -24,4 +24,18 @@ class object {
     if (loc.x>width*0.9) loc.x=width*0.9;
     if (loc.y>height*0.9) loc.y=height*0.9;
   }
+  
+   boolean Collidingwith(object myObj) {
+    float d = dist(myObj.loc.x, myObj.loc.y, loc.x, loc.y);
+    if (roomwith(myObj)&& d< s/2 + myObj.s/2)
+      return true;
+    else
+      return false;
+  }
+  boolean roomwith(object myObj){
+   if(roomX == myObj.roomX && roomY== myObj.roomY)
+   return true;
+   else
+   return false;
+  }
 }

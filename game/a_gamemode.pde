@@ -15,6 +15,7 @@ void GameObjects() {
   for ( int i =0;  i < myObjects.size(); i++) {
     object myObj = myObjects.get(i);
     if (myObj.roomX == myHero.roomX && myObj.roomY == myHero.roomY) {
+      
       myObj.show();
       myObj.act();
 
@@ -47,7 +48,7 @@ void map() {
   while (i <169) {
 
     if (map.get(mapx, mapy)== #FFFFFF) {
-      stroke(black);
+      
       fill(white);
     }
     if (map.get(mapx, mapy) == #000000) {

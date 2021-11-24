@@ -1,6 +1,6 @@
 class Shotgun extends weapon {
   Shotgun(){
-    super(90,5);
+    super(ShotgunBS,ShotgunThres);
   }
    void shoot(){
     if (sTimer >= threshold){

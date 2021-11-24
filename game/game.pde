@@ -57,6 +57,14 @@ int mapx, mapy;
 PImage map;
 color nR, sR, eR, wR;
 
+final int AMMO = 1;
+final int GUN = 2;
+final int  HEALTH = 3;
+
+final int ShotgunBS = 90;
+final int ShotgunThres= 5;
+
+
 void setup() {
   //setup
   fullScreen();
