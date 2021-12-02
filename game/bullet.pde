@@ -3,13 +3,14 @@ class Bullet extends object {
   float speed;
   int s;
   color colour;
+  float d;
   Bullet() {
     loc = new PVector(myHero.loc.x, myHero.loc.y);
     vel = new PVector(0, 0);
     speed = 10;
     vel.setMag(speed);
     hp = 1;
-    s = 5;
+    s = 100;
     colour = pink;
   }
 
@@ -23,6 +24,21 @@ class Bullet extends object {
     colour = ncolor;
     roomX = myHero.roomX;
     roomY = myHero.roomY;
+    
+  }
+  
+  Bullet(PVector mouseaim, color ncolor, int nsize, float nspeed, float damage){
+    loc = new PVector(myHero.loc.x, myHero.loc.y);
+    vel = mouseaim;
+    speed = nspeed;
+    vel.setMag(speed);
+    hp = 1;
+    s = nsize;
+    colour = ncolor;
+    roomX = myHero.roomX;
+    roomY = myHero.roomY;
+    d = damage;
+    
     
   }
 

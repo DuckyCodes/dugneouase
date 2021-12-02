@@ -1,7 +1,7 @@
 class Enemy extends object {
   float sp;
   int rY, rX ;
-  int s;
+  AGIF currentAction;
 
   Enemy() {
     s = 50;
@@ -10,12 +10,14 @@ class Enemy extends object {
     hp = 100;
     roomX = 0;
     roomY= 0;
+    xp =1;
   }
-  Enemy(int _hp, int s, int x, int y) {
+  Enemy(int _hp, int _s, int x, int y) {
     loc = new PVector(width/2, height/2);
     vel = new PVector(0, 0);
     hp = _hp;
-    s = 50;
+    s = _s;
+    
     roomX = x;
     roomY = y;
   }
@@ -32,17 +34,23 @@ class Enemy extends object {
     super.act();
 
     int i = 0 ;
+
+
     while (i<myObjects.size()) {
-     
+
       object obj = myObjects.get(i);
       if (obj instanceof Bullet && Collidingwith(obj) ) {
+
         hp = hp - int(obj.vel.mag());
         obj.hp = 0;
         if (hp<=0) {
+           explode(s, 100, red);
           myObjects.add(new DropItem(loc.x, loc.y, roomX, roomY));
+          //myObjects.add(new Message(loc,"+"+xp));
+          myHero.xp =myHero.xp + xp;
         }
       }
-      
+
       i++;
     }
   }

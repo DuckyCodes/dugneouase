@@ -19,6 +19,10 @@ AGIF manRight;
 AGIF manLeft;
 AGIF manStand;
 
+AGIF lurkerUp;
+AGIF lurkerDown;
+AGIF lurkerRight;
+AGIF lurkerLeft;
 //button
 Button introButton;
 //hero
@@ -66,9 +70,15 @@ final int AMMO = 1;
 final int GUN = 2;
 final int  HEALTH = 3;
 
+final int ShotgunD = 1;
 final int ShotgunBS = 90;
 final int ShotgunThres= 5;
+final int Follower_HP = 100;
+final int FollowerS= 50;
 
+ PImage heart;
+ PImage shotgun;
+ PImage lasergun;
 
 void setup() {
   //setup
@@ -104,11 +114,16 @@ void setup() {
 
   //GIF
   introGIF = new AGIF(35, "frame_", "_delay-0.03s.gif", 0, 0 );
-  manUp = new AGIF(3,"forward",".png",0,0);
-  manDown = new AGIF(3,"back",".png",0,0);
-  manRight = new AGIF(3,"right",".png",0,0);
-  manLeft = new AGIF(3,"left",".png",0,0);
-  manStand = new AGIF(3,"stand",".png",0,0);
+  manUp = new AGIF(3, "forward", ".png", 0, 0);
+  manDown = new AGIF(3, "back", ".png", 0, 0);
+  manRight = new AGIF(3, "right", ".png", 0, 0);
+  manLeft = new AGIF(3, "left", ".png", 0, 0);
+  manStand = new AGIF(3, "stand", ".png", 0, 0);
+
+  lurkerUp = new AGIF(3, "lurkerUp", ".png", 0, 0);
+  lurkerDown = new AGIF(3, "lurkerDown", ".png", 0, 0);
+  lurkerRight = new AGIF(3, "lurkerRight", ".png", 0, 0);
+  lurkerLeft = new AGIF(3, "lurkerLeft", ".png", 0, 0);
 
   //buttons
   introButton = new Button("START", 400, 400, 200, 150, green, yellow);
@@ -117,8 +132,15 @@ void setup() {
   myHero = new hero();
   myObjects.add(myHero);
   myObjects.add(new Enemy());
-  myObjects.add(new Follower(0,0));
-  myObjects.add(new Lurker(0,0));
+  myObjects.add(new Follower(0, 0));
+  myObjects.add(new Lurker(0, 0));
+  
+  heart = loadImage("heart.png");
+  heart.resize(25,25);
+  shotgun = loadImage("shotgun.png");
+  shotgun.resize(50,25);
+  lasergun = loadImage("lasergun.png");
+  lasergun.resize(50,25);
 }
 
 

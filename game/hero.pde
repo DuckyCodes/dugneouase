@@ -12,7 +12,7 @@ class hero extends object {
   hero() {
     super();
     sp=5;
-    hp=5;
+    hpMax=hp=100;
     rY= 1;
     rX= 1;
     s = 40;
@@ -50,12 +50,13 @@ class hero extends object {
     if (!aKey&&!dKey) vel.x =0;
 
     if (abs(vel.y)>abs(vel.x)) {
-      if (vel.y>=0)currentAction = manDown;
-      else currentAction = manUp;
+      if (vel.y>=0)currentAction = manUp;
+      else currentAction = manDown;
     } else {
       if (vel.x>0)currentAction = manRight;
       else currentAction = manLeft;
     }
+  
 
     if (nR != white && loc.y ==height*0.1&& loc.x >= width/2-50&&loc.x <= width/2+50  ) {
       rY--;
@@ -97,12 +98,19 @@ class hero extends object {
       }
       if (obj instanceof DropItem && Collidingwith(obj)) {
         DropItem item = (DropItem) obj;
-        if (item.type==GUN) {
+        if (item.type == GUN) {
           myWeapon = item.w;
-          item.hp=0;
+          item.hp = 0;
+        }
+        if (item.type == HEALTH) {
+          myHero.hp = myHero.hp + 10;
+          if (hp>hpMax)hp = hpMax;
+          item.hp = 0;
         }
       }
+
       i++;
+
       if (myHero.hp == 0) mode = egame;
     }
   }
