@@ -56,34 +56,32 @@ class Lurker extends Enemy {
   }
 }
 
-//class Turret extends Enemy{
 
-//  int shotTimer, threshold;
-//  float x;
+class Turret extends Enemy {
 
-//  Turret(int x, int y){
-//    super(250,200,x,y);  
-//    hp = 100;
-//  }
+  int shotTimer, threshold;
+  float x;
 
-//  void show(){
-//    fill(255);
-//    ellipse(loc.x,loc.y,5,5);
-//    fill(0);
-//    textSize(20);
-//    text(hp,loc.x,loc.y);
-//  }
+  Turret(int x, int y) {
+    super(400, 25, x, y);
+  }
 
-//  void act(){
-//     super.act(); 
+  void show() {
+    fill(red);
+    circle(loc.x, loc.y, 100);
+    fill(0);
+    textSize(20);
+    text(hp, loc.x, loc.y);
+  }
 
-//     shotTimer++;
-//     if (shotTimer>threshold) {
-//      shotTimer = 0;
-//      PVector aim = new PVector();
-//      aim.setMag(10);
-//      myObjects.add(new BulletTurret(loc.x, loc.y, myHero.loc.x-loc.x, myHero.loc.y-loc.y));
-//    }
-
-//  }
-//}
+  void act() {
+    super.act();
+    shotTimer++;
+    if (shotTimer >= threshold) {
+      PVector aimVector = new PVector (myHero.loc.x - loc.x, myHero.loc.y - loc.y);
+      aimVector.setMag(1);
+      myObjects.add(new BulletTurret(aimVector, 10, 20, loc.x, loc.y));
+      shotTimer = 0;
+    }
+  }
+}

@@ -39,13 +39,15 @@ class hero extends object {
   }
   void act() {
     super.act();
-
-    if (wKey) vel.y =-sp;
-    if (sKey) vel.y=sp;
-    if (aKey) vel.x=-sp;
-    if (dKey) vel.x=sp;
-
-    if (vel.mag()>5) vel.setMag(sp);
+    vel.mult(0.93);
+    
+    if (wKey) vel.y -=sp;
+    if (sKey) vel.y +=sp;
+    if (aKey) vel.x-=sp;
+    if (dKey) vel.x+=sp;
+    
+    
+    if (vel.mag()>sp) vel.setMag(sp);
     if (!wKey&&!sKey) vel.y =0;
     if (!aKey&&!dKey) vel.x =0;
 

@@ -7,7 +7,9 @@ class Shotgun extends weapon {
       for (int i = 0; i < 30; i++) {
         PVector aimVector = new PVector(mouseX-myHero.loc.x, mouseY-myHero.loc.y);
         aimVector.rotate(random(0.35));
-        aimVector.setMag(bSpeed);
+        aimVector.setMag(bSpeed/2);
+        
+         myHero.vel.sub(aimVector);
         myObjects.add(new Bullet(aimVector, pink, 10, 10, 1));
         sTimer = 0;
       }
@@ -17,12 +19,16 @@ class Shotgun extends weapon {
 class laserGun extends weapon {
   laserGun() {
     super(1, 1);
+    
   }
   void shoot() {
     if (sTimer>= threshold) {
       PVector aimVector = new PVector(mouseX-myHero.loc.x, mouseY-myHero.loc.y);
+      
       aimVector.setMag(bSpeed);
-      myObjects.add(new Bullet(aimVector, pink, 10, 10, 1)); 
+       myHero.vel.sub(aimVector);
+      myObjects.add(new Bullet(aimVector, pink, 10, 10, 1));
+      
       sTimer = 0;
     }
   }

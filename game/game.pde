@@ -76,9 +76,9 @@ final int ShotgunThres= 5;
 final int Follower_HP = 100;
 final int FollowerS= 50;
 
- PImage heart;
- PImage shotgun;
- PImage lasergun;
+PImage heart;
+PImage shotgun;
+PImage lasergun;
 
 void setup() {
   //setup
@@ -131,17 +131,42 @@ void setup() {
 
   myHero = new hero();
   myObjects.add(myHero);
-  myObjects.add(new Enemy());
-  myObjects.add(new Follower(0, 0));
-  myObjects.add(new Lurker(0, 0));
-  
+myObjects.add(new Follower(0, 0));
+myObjects.add(new Follower(0, 0));myObjects.add(new Follower(0, 0));myObjects.add(new Follower(0, 0));
+myObjects.add(new Turret(0, 0));
+
   heart = loadImage("heart.png");
-  heart.resize(25,25);
+  heart.resize(25, 25);
   shotgun = loadImage("shotgun.png");
-  shotgun.resize(50,25);
+  shotgun.resize(50, 25);
   lasergun = loadImage("lasergun.png");
-  lasergun.resize(50,25);
+  lasergun.resize(50, 25);
+println(map.height);
+  x = 0;
+  y = 0;
+  while (y < map.height) {
+    color roomColor = map.get(x, y);
+    println(green, roomColor);
+    if (roomColor == orange) {
+      println("asdf");
+      myObjects.add(new Follower(x, y));
+    }
+    if (roomColor == green) {
+      
+      myObjects.add(new Lurker(x, y));
+    }
+    if (roomColor == yellow) {
+      myObjects.add(new Turret(x, y));
+    }
+    x++;
+    if (x == map.width) {
+      x = 0;
+      y++;
+      println();
+    }
+  }
 }
+
 
 
 void draw () {
