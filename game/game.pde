@@ -127,13 +127,12 @@ void setup() {
 
   //buttons
   introButton = new Button("START", 400, 400, 200, 150, green, yellow);
+  hpButton = new Button("+", 400, 400, 200, 150, green, yellow);
   //hero
 
   myHero = new hero();
   myObjects.add(myHero);
-myObjects.add(new Follower(0, 0));
-myObjects.add(new Follower(0, 0));myObjects.add(new Follower(0, 0));myObjects.add(new Follower(0, 0));
-myObjects.add(new Turret(0, 0));
+
 
   heart = loadImage("heart.png");
   heart.resize(25, 25);
@@ -141,7 +140,7 @@ myObjects.add(new Turret(0, 0));
   shotgun.resize(50, 25);
   lasergun = loadImage("lasergun.png");
   lasergun.resize(50, 25);
-println(map.height);
+  println(map.height);
   x = 0;
   y = 0;
   while (y < map.height) {
@@ -152,7 +151,7 @@ println(map.height);
       myObjects.add(new Follower(x, y));
     }
     if (roomColor == green) {
-      
+
       myObjects.add(new Lurker(x, y));
     }
     if (roomColor == yellow) {

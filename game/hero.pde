@@ -57,7 +57,7 @@ class hero extends object {
     } else {
       if (vel.x>0)currentAction = manRight;
       else currentAction = manLeft;
-    }
+    } 
   
 
     if (nR != white && loc.y ==height*0.1&& loc.x >= width/2-50&&loc.x <= width/2+50  ) {

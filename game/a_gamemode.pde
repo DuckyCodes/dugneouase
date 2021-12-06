@@ -47,13 +47,21 @@ void map() {
   int mapy = 0;
   while (i <169) {
 
-    if (map.get(mapx, mapy)== #FFFFFF) {
+    if (map.get(mapx, mapy)== white) {
       
       fill(white);
     }
-    if (map.get(mapx, mapy) == #000000) {
+    if (map.get(mapx, mapy) == black) {
       stroke(white);
       fill(black);
+    }
+    if (map.get(mapx, mapy)== yellow) {
+      
+      fill(yellow);
+    }
+    if (map.get(mapx, mapy) == green) {
+      stroke(white);
+      fill(green);
     }
     if (myHero.rX == mapx && myHero.rY == mapy) {
       fill(orange);
