@@ -1,7 +1,6 @@
 class hero extends object {
 
   float sp;
-  int rY, rX ;
   int s;
   int hp;
   int pt;
@@ -13,8 +12,8 @@ class hero extends object {
     super();
     sp=5;
     hpMax=hp=100;
-    rY= 1;
-    rX= 1;
+    roomY= 1;
+    roomX= 1;
     s = 40;
     currentAction = manStand;
 
@@ -39,7 +38,7 @@ class hero extends object {
   }
   void act() {
     super.act();
-    vel.mult(0.93);
+    //vel.mult(0.93);
     
     if (wKey) vel.y -=sp;
     if (sKey) vel.y +=sp;
@@ -61,16 +60,16 @@ class hero extends object {
   
 
     if (nR != white && loc.y ==height*0.1&& loc.x >= width/2-50&&loc.x <= width/2+50  ) {
-      rY--;
+      roomY--;
       loc = new PVector(width/2, height*0.9-10);
     } else if (eR != white && loc.x ==width*0.9&& loc.y >= height/2-50&& loc.y <= height/2+50) {
-      rX++;
+      roomX++;
       loc = new PVector(width*0.1+10, height/2 );
     } else if (sR != white && loc.y ==height*0.9&& loc.x >= width/2-50 &&loc.x <= width/2+50) {
-      rY++;
+      roomY++;
       loc = new PVector(width/2, height*0.1+10);
     } else if (wR != white && loc.x ==width*0.1&& loc.y >= height/2-50&& loc.y <= height/2+50) {
-      rX--;
+      roomX--;
       loc = new PVector(width*0.9-10, height/2);
     }
     myWeapon.update();
@@ -92,7 +91,7 @@ class hero extends object {
       if (obj instanceof Enemy && roomX == obj.roomX && roomY == obj.roomY) {
         if (protection == false) {
           if (dist(myHero.loc.x, myHero.loc.y, obj.loc.x, obj.loc.y) <= s/2 + obj.s/2) {
-            hp--;
+            hp = hp - 25;
             protection = true;
             pt = 100;
           }

@@ -9,10 +9,10 @@ void gameRoom(){
  
  
   //exit
-  nR = map.get(myHero.rX, myHero.rY-1);
-  sR = map.get(myHero.rX, myHero.rY+1);
-  wR = map.get(myHero.rX-1, myHero.rY);
-  eR = map.get(myHero.rX+1, myHero.rY);
+  nR = map.get(myHero.roomX, myHero.roomY-1);
+  sR = map.get(myHero.roomX, myHero.roomY+1);
+  wR = map.get(myHero.roomX-1, myHero.roomY);
+  eR = map.get(myHero.roomX+1, myHero.roomY);
   
   //doorsa
   noStroke();

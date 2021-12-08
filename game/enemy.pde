@@ -1,6 +1,5 @@
 class Enemy extends object {
   float sp;
-  int rY, rX ;
   AGIF currentAction;
 
   Enemy() {
@@ -20,6 +19,7 @@ class Enemy extends object {
     
     roomX = x;
     roomY = y;
+    
   }
   void show() {
     stroke(black);
@@ -28,6 +28,7 @@ class Enemy extends object {
     fill(black);
     textSize(20);
     text(hp, loc.x, loc.y);
+    
   }
   void act() {
 

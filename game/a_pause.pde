@@ -1,5 +1,5 @@
 void pause() {
-
+  background(brown);
   //upgrades text
   fill(black);
   textSize(100);
@@ -9,40 +9,34 @@ void pause() {
   //textMode(CENTER/2);
 
   //hp text
-  click();
+
   textSize(60);
   fill(black);
-  text("max hp: "+myHero.hpMAX, width/2.5, height/3);
+  text("max hp: "+myHero.hpMax, width/2.5, height/3);
 
-   hpButton = new Button("+", 400, 400, 200, 150, green, yellow);
-  hpbutton.show();
-  if (myHero.xp >= 1) {
-    if (hpbutton.clicked) {
-      myHero.hp++;
-      myHero.hpMAX = myHero.hpMAX + 1;
-      myHero.xp = myHero.xp - 1;
-    } else myHero.hpMAX = myHero.hpMAX;
-  }
+  hpButton = new Button("hp+", 100, 200, 50, 50, green, yellow);
+  hpButton.show();
+  //if (myHero.xp >= 1) {
+  if (hpButton.clicked) {
+    myHero.hp++;
+    myHero.hpMax = myHero.hpMax + 1;
+    myHero.xp = myHero.xp - 1;
+  } else myHero.hpMax = myHero.hpMax;
+  //}
 
-  //back
-  backbutton = new Button("back", width-100, height-50, 100, 50, dirt, unity);
-  backbutton.show();
-  if (backbutton.clicked) {
-    mode = game;
-  }
 
 
   //speed text
   textSize(60);
   fill(black);
-  text("speed: "+myHero.speed, width/2.5, height/2);
+  text("speed: "+ myHero.sd, width/2.5, height/2);
 
-  speedbutton = new Button("Speed+", 100, 300, 50, 50, shadow, unity);
-  speedbutton.show();
-  if (myHero.xp >= 1) {
-    if (speedbutton.clicked) {
-      myHero.sd = myHero.sd + 0.25;
-      myHero.xp = myHero.xp - 1;
-    }
-  }
+  sdButton = new Button("Speed+", 100, 300, 50, 50, green, yellow);
+  sdButton.show();
+  //if (myHero.xp >= 1) {
+  if (sdButton.clicked) {
+    myHero.sd = myHero.sd + 0.25;
+    myHero.xp = myHero.xp - 1;
+  }else myHero.sd = myHero.sd;
 }
+//}

@@ -12,11 +12,11 @@ class Follower extends Enemy {
     fill(0);
     textSize(20);
     text(hp, loc.x, loc.y);
+    println(roomX, roomY);
   }
 
   void act() {
     super.act(); 
-
     vel = new PVector (myHero.loc.x - loc.x, myHero.loc.y - loc.y);
     vel.setMag(2.5);
   }

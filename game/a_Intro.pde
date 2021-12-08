@@ -8,7 +8,6 @@ void intro() {
 
 
   if (introButton.clicked) {
-
     mode = gmode;
   }
 }
