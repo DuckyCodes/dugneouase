@@ -24,9 +24,15 @@ class hero extends object {
 
   void show() {
     pushMatrix();
+    fill(black);
+    noStroke();
+    rect(loc.x,loc.y-20,hpMax, 4);
+    fill(red);
+    noStroke();
+    rect(loc.x,loc.y-20,hp, 4);
     stroke(blue);
     ellipse(myHero.loc.x, myHero.loc.y, pt, pt);
-
+    
     currentAction.show( myHero.loc.x, myHero.loc.y, s, s);
 
     fill(white);
