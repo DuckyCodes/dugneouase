@@ -16,13 +16,13 @@ void pause() {
 
   hpButton = new Button("hp+", 100, 200, 50, 50, green, yellow);
   hpButton.show();
-  //if (myHero.xp >= 1) {
+  if (myHero.xp >= 1) {
   if (hpButton.clicked) {
     myHero.hp++;
     myHero.hpMax = myHero.hpMax + 1;
     myHero.xp = myHero.xp - 1;
   } else myHero.hpMax = myHero.hpMax;
-  //}
+  }
 
 
 
@@ -33,10 +33,13 @@ void pause() {
 
   sdButton = new Button("Speed+", 100, 300, 50, 50, green, yellow);
   sdButton.show();
-  //if (myHero.xp >= 1) {
+  if (myHero.xp >= 1) {
   if (sdButton.clicked) {
     myHero.sd = myHero.sd + 0.25;
     myHero.xp = myHero.xp - 1;
   }else myHero.sd = myHero.sd;
+  
+  textSize(60);
+  text("XP: "+myHero.xp, width/2, height/1.15);
 }
-//}
+}

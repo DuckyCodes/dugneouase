@@ -32,4 +32,12 @@ class laserGun extends weapon {
       sTimer = 0;
     }
   }
+  
+}
+class DefaultGun extends weapon {
+  DefaultGun() {
+    super(50, 100);
+    
+  }
+  
 }

@@ -3,10 +3,10 @@ class Message extends object {
   int time;
   String text;
 
-  Message(float x, float y, int rx, int ry) {
+  Message(String _text,float x, float y, int rx, int ry) {
     hp = 1;
     time = 250;
-    //text = _text;
+    text = _text;
     loc = new PVector(x, y);
     roomX = rx;
     roomY = ry;

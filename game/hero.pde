@@ -17,22 +17,24 @@ class hero extends object {
     s = 40;
     currentAction = manStand;
 
-    pt = 100;
+    pt = 50;
     protection = true;
-    myWeapon = new Shotgun();
+    myWeapon = new DefaultGun();
   }
 
   void show() {
     pushMatrix();
-    fill(black);
-    noStroke();
-    rect(loc.x,loc.y-20,hpMax, 4);
-    fill(red);
-    noStroke();
-    rect(loc.x,loc.y-20,hp, 4);
     stroke(blue);
     ellipse(myHero.loc.x, myHero.loc.y, pt, pt);
-    
+    fill(black);
+    noStroke();
+    rect(loc.x, loc.y-20, hpMax, 4);
+    fill(red);
+    noStroke();
+    rect(loc.x, loc.y-20, hp, 4);
+
+
+
     currentAction.show( myHero.loc.x, myHero.loc.y, s, s);
 
     fill(white);
@@ -45,28 +47,32 @@ class hero extends object {
   void act() {
     super.act();
     //vel.mult(0.93);
-    
+
     if (wKey) vel.y -=sp;
     if (sKey) vel.y +=sp;
     if (aKey) vel.x-=sp;
     if (dKey) vel.x+=sp;
-    
-    
+
+
     if (vel.mag()>sp) vel.setMag(sp);
     if (!wKey&&!sKey) vel.y =0;
     if (!aKey&&!dKey) vel.x =0;
 
     if (abs(vel.y)>abs(vel.x)) {
-      if (vel.y>=0)currentAction = manUp;
+      if (vel.y>0)currentAction = manUp;
       else currentAction = manDown;
     } else {
       if (vel.x>0)currentAction = manRight;
       else currentAction = manLeft;
-    } 
-  
+    }
+
+    if (vel.x==0 && vel.y==0) currentAction = manStand;
+
+
 
     if (nR != white && loc.y ==height*0.1&& loc.x >= width/2-50&&loc.x <= width/2+50  ) {
       roomY--;
+
       loc = new PVector(width/2, height*0.9-10);
     } else if (eR != white && loc.x ==width*0.9&& loc.y >= height/2-50&& loc.y <= height/2+50) {
       roomX++;
@@ -90,6 +96,11 @@ class hero extends object {
     if (pt<=0) {
       protection = false;
     }
+if (myHealer.roomX != myHero.roomX || myHealer.roomY != myHero.roomY) {
+      myHealer.roomX = myHero.roomX;
+      myHealer.roomY = myHero.roomY;
+      println("asdf");
+    }
 
     int i = 0;
     while (i < myObjects.size()) {
@@ -99,7 +110,16 @@ class hero extends object {
           if (dist(myHero.loc.x, myHero.loc.y, obj.loc.x, obj.loc.y) <= s/2 + obj.s/2) {
             hp = hp - 25;
             protection = true;
-            pt = 100;
+            pt = 50;
+          }
+        }
+      }
+      if (obj instanceof BulletTurret && roomX == obj.roomX && roomY == obj.roomY) {
+        if (protection == false) {
+          if (dist(myHero.loc.x, myHero.loc.y, obj.loc.x, obj.loc.y) <= s/2 + obj.s/2) {
+            hp = hp - 1;
+            protection = true;
+            pt = 50;
           }
         }
       }
@@ -115,10 +135,8 @@ class hero extends object {
           item.hp = 0;
         }
       }
-
       i++;
-
-      if (myHero.hp == 0) mode = egame;
+      if (myHero.hp <= 0) mode = egame;
     }
   }
 }

@@ -1,8 +1,8 @@
-class Enemy extends object {
+class ally extends object{
   float sp;
   AGIF currentAction;
 
-  Enemy() {
+  ally() {
     s = 50;
     loc = new PVector(width/2, height/2);
     vel = new PVector(0, 0);
@@ -11,7 +11,7 @@ class Enemy extends object {
     roomY= 0;
     xp =1;
   }
-  Enemy(int _hp, int _s, int x, int y) {
+  ally(int _hp, int _s, int x, int y) {
     loc = new PVector(width/2, height/2);
     vel = new PVector(0, 0);
     hp = _hp;
@@ -33,10 +33,7 @@ class Enemy extends object {
   void act() {
 
     super.act();
-
     int i = 0 ;
-
-
     while (i<myObjects.size()) {
 
       object obj = myObjects.get(i);
@@ -55,3 +52,4 @@ class Enemy extends object {
     }
   }
 }
+  

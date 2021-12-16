@@ -4,7 +4,8 @@ class object {
   PVector vel;
   int damage;
   color c;
-  int hp, hpMax;
+  float hp;
+  int hpMax;
   int xp;
   float sd;
   int s;

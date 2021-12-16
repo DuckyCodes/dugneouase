@@ -30,6 +30,7 @@ Button sdButton;
 //hero
 
 hero myHero;
+healer myHealer;
 
 //enemy
 Follower myFollower;
@@ -45,6 +46,7 @@ boolean wKey, aKey, sKey, dKey, spaceKey;
 //colours
 color green = #4BFF05;
 color blue = #059DFF;
+color purple = #69008e;
 color yellow = #F6FF0D;
 color white = #FFFFFF;
 color black = #000000;
@@ -76,11 +78,13 @@ final int ShotgunD = 1;
 final int ShotgunBS = 90;
 final int ShotgunThres= 5;
 final int Follower_HP = 100;
-final int FollowerS= 50;
+final int FollowerS= 70;
 
 PImage heart;
 PImage shotgun;
 PImage lasergun;
+PImage chest;
+PImage chestOpen;
 
 void setup() {
   //setup
@@ -135,7 +139,11 @@ void setup() {
 
   myHero = new hero();
   myObjects.add(myHero);
-  myObjects.add(new Follower(0, 0));
+  myHealer = new healer(x,y);
+  myObjects.add(myHealer);
+
+
+
 
   heart = loadImage("heart.png");
   heart.resize(25, 25);
@@ -143,21 +151,39 @@ void setup() {
   shotgun.resize(50, 25);
   lasergun = loadImage("lasergun.png");
   lasergun.resize(50, 25);
+  chest = loadImage("Chest.png");
+  chest.resize(100, 100);
+  chestOpen = loadImage("ChestOpen.png");
+  chestOpen.resize(100, 100);
 
   x = 0;
   y = 0;
+  
   while (y < map.height) {
     color roomColor = map.get(x, y);
     if (roomColor == orange) {
-      println("asdf");
+      
+      myObjects.add(new Follower(x, y));
+    }
+    if (roomColor == blue) {
+      myObjects.add(new fakechest(x, y));
+    }
+    if (roomColor == orange) {
+    
       myObjects.add(new Follower(x, y));
     }
     if (roomColor == green) {
 
       myObjects.add(new Lurker(x, y));
+      myObjects.add(new Lurker(x, y));
+      myObjects.add(new Lurker(x, y));
+      myObjects.add(new Lurker(x, y));
     }
     if (roomColor == yellow) {
       myObjects.add(new Turret(x, y));
+    }
+    if (roomColor == pink) {
+      myObjects.add(new chest(x, y));
     }
     x++;
     if (x == map.width) {

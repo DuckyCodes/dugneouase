@@ -8,7 +8,7 @@ class DropItem extends object {
     w = new Shotgun();
     w = new laserGun();
 
-    type = (int)random(3);
+    type = (int)random(2);
     if (type == 1) type = HEALTH;
     if (type == 2) type = GUN;
     {

@@ -51,6 +51,8 @@ class Lurker extends Enemy {
 
     if ((dist(myHero.loc.x, myHero.loc.y, loc.x, loc.y) <= 150)) {
       vel = new PVector(myHero.loc.x - loc.x, myHero.loc.y - loc.y);
+    } else {
+      vel.setMag(0);
     }
     vel.setMag(2.5);
   }
@@ -60,15 +62,16 @@ class Lurker extends Enemy {
 class Turret extends Enemy {
 
   int shotTimer, threshold;
-  float x;
 
   Turret(int x, int y) {
-    super(400, 25, x, y);
+    super(100, 25, x, y);
+    s = 100;
+    threshold=shotTimer =50;
   }
 
   void show() {
     fill(red);
-    circle(loc.x, loc.y, 100);
+    circle(loc.x, loc.y, s);
     fill(0);
     textSize(20);
     text(hp, loc.x, loc.y);
@@ -80,8 +83,36 @@ class Turret extends Enemy {
     if (shotTimer >= threshold) {
       PVector aimVector = new PVector (myHero.loc.x - loc.x, myHero.loc.y - loc.y);
       aimVector.setMag(1);
-      myObjects.add(new BulletTurret(aimVector, 10, 20, loc.x, loc.y));
-      shotTimer = 0;
+      myObjects.add(new BulletTurret(aimVector, pink, 10, 20, loc.x, loc.y));
+      shotTimer = 1;
     }
+  }
+}
+class fakechest extends Enemy {
+  boolean chesta = true;
+  int shotTimer, threshold;
+  fakechest(int x, int y) {
+    super(400, 25, x, y);
+  }
+  void show () {
+    image(chest, loc.x, loc.y);
+  }
+  void act() {
+    super.act(); 
+
+    if ((dist(myHero.loc.x, myHero.loc.y, loc.x, loc.y) <= 50)) {
+      chesta = false;
+    }
+    if (chesta == false) {
+      vel = new PVector(myHero.loc.x - loc.x, myHero.loc.y - loc.y);
+      if (shotTimer >= threshold) {
+        PVector aimVector = new PVector (myHero.loc.x - loc.x, myHero.loc.y - loc.y);
+        aimVector.setMag(1);
+        myObjects.add(new BulletTurret(aimVector, pink, 10, 20, loc.x, loc.y));
+        shotTimer = 10;
+      }
+    } else {
+    }
+    vel.setMag(2.5);
   }
 }
